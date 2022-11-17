@@ -1,9 +1,7 @@
-import { Container } from "../ContainerBox/ContainerBox.styled"
+import { Container } from '../ContainerBox/ContainerBox.styled';
 
-const ContainerBox = ({children}) => {
-return (
-    <Container>{children}</Container>
-)
-}
+const ContainerBox = ({ children }) => {
+  return <Container>{children}</Container>;
+};
 
-export default ContainerBox
+export default ContainerBox;

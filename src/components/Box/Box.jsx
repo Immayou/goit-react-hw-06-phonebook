@@ -1,9 +1,7 @@
-import { CoverBox } from "../Box/Box.styled"
+import { CoverBox } from '../Box/Box.styled';
 
-const Box = ({children}) => {
-    return (
-        <CoverBox>{children}</CoverBox>
-    )
-    }
-    
-    export default Box
+const Box = ({ children }) => {
+  return <CoverBox>{children}</CoverBox>;
+};
+
+export default Box;
