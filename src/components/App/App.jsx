@@ -12,7 +12,13 @@ import Filter from '../Filter/Filter';
 
 import { Wrapper, ContactsTitle } from './App.styled';
 
+import { useSelector } from 'react-redux';
+
 export const App = () => {
+  const contacts1 = useSelector(state => state.contacts);
+
+  const filter2 = useSelector(state => state.filter);
+
   const [contacts, setContacts] = useState(() => {
     return JSON.parse(window.localStorage.getItem('addedContacts')) ?? [];
   });

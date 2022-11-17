@@ -1,4 +1,6 @@
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
+import { deleteContact } from 'redux/reducers';
 import {
   ListOfContacts,
   ContactItem,
@@ -8,6 +10,7 @@ import {
 } from './ContactList.styled';
 
 const ContactList = ({ contacts, onDeleteContact }) => {
+  const dispatch = useDispatch();
   return (
     <ListOfContacts>
       {contacts.map(({ id, name, number }) => (

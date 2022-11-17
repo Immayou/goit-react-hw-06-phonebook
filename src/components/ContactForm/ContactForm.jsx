@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { TiPhoneOutline } from 'react-icons/ti';
 import { generate } from 'shortid';
+import { addContact } from '../../redux/reducers';
 import {
   Title,
   PhoneForm,
@@ -13,6 +15,7 @@ import {
 } from './ContactForm.styled';
 
 const ContactForm = ({ submitData }) => {
+  const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
@@ -39,6 +42,7 @@ const ContactForm = ({ submitData }) => {
       number,
       id: generate(),
     };
+    dispatch(addContact(contactToAdd));
     submitData(contactToAdd);
     reset();
   };
