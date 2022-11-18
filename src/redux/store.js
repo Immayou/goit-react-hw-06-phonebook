@@ -8,7 +8,8 @@ import { configureStore } from '@reduxjs/toolkit';
 //   REGISTER,
 //   REHYDRATE,
 // } from 'redux-persist';
-import { contactsSlice, filterSlice } from './slice';
+import { contactsSlice } from './contactSlice';
+import { filterSlice } from './filterSlice';
 
 export const store = configureStore({
   reducer: {

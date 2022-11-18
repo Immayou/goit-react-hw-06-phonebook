@@ -1,4 +1,7 @@
 // import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+
+import { getContacts } from '../../redux/contactSlice';
 
 import ContainerBox from '../ContainerBox/ContainerBox';
 
@@ -12,10 +15,8 @@ import Filter from '../Filter/Filter';
 
 import { Wrapper, ContactsTitle } from './App.styled';
 
-import { useSelector } from 'react-redux';
-
 export const App = () => {
-  const addedContacts = useSelector(state => state.contacts);
+  const addedContacts = useSelector(getContacts);
 
   // const [contacts, setContacts] = useState(() => {
   //   return JSON.parse(window.localStorage.getItem('addedContacts')) ?? [];

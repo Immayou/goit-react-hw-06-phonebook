@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { TiPhoneOutline } from 'react-icons/ti';
 import { generate } from 'shortid';
-import { addContact } from '../../redux/slice';
+import { addContact, getContacts } from '../../redux/contactSlice';
 import {
   Title,
   PhoneForm,
@@ -15,7 +15,7 @@ import {
 
 const ContactForm = () => {
   const dispatch = useDispatch();
-  const addedContacts = useSelector(state => state.contacts);
+  const addedContacts = useSelector(getContacts);
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 

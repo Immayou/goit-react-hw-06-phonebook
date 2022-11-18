@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteContact } from '../../redux/slice';
+import { deleteContact, getContacts } from '../../redux/contactSlice';
+import { getFilterValue } from '../../redux/filterSlice';
 import {
   ListOfContacts,
   ContactItem,
@@ -10,8 +11,8 @@ import {
 
 const ContactList = () => {
   const dispatch = useDispatch();
-  const addedContacts = useSelector(state => state.contacts);
-  const enteredFilterValue = useSelector(state => state.filter);
+  const addedContacts = useSelector(getContacts);
+  const enteredFilterValue = useSelector(getFilterValue);
 
   const getFiltredContacts = () => {
     const normalizeFilter = enteredFilterValue.toLowerCase();
