@@ -17,11 +17,11 @@ export const filterSlice = createSlice({
   name: 'filter',
   initialState: '',
   reducers: {
-    getFilter(state, action) {
-      return state === action.payload;
+    setFilter(state, action) {
+      return action.payload;
     },
   },
 });
 
 export const { addContact, deleteContact } = contactsSlice.actions;
-export const { getFilter } = filterSlice.actions;
+export const { setFilter } = filterSlice.actions;

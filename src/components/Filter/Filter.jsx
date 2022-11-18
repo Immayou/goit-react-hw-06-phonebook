@@ -1,18 +1,24 @@
-import PropTypes from 'prop-types';
 import shortid from 'shortid';
+import { useDispatch } from 'react-redux';
+import { setFilter } from '../../redux/slice';
 import { FilterWrapper, FilterLabel, InputFilterField } from './Filter.styled';
 
-const Filter = ({ value, filterInput }) => {
+const Filter = () => {
+  const dispatch = useDispatch();
   const filterInputId = shortid.generate();
+
+  const filterHandler = e => {
+    e.preventDefault();
+    dispatch(setFilter(e.currentTarget.value));
+  };
 
   return (
     <FilterWrapper>
       <FilterLabel htmlFor={filterInputId}>Find contacts by name</FilterLabel>
       <InputFilterField
         id={filterInputId}
-        onChange={filterInput}
+        onChange={filterHandler}
         type="text"
-        value={value}
         name="filter"
         title="Filter by name"
       />
@@ -21,8 +27,3 @@ const Filter = ({ value, filterInput }) => {
 };
 
 export default Filter;
-
-Filter.propTypes = {
-  value: PropTypes.string.isRequired,
-  filterInput: PropTypes.func.isRequired,
-};

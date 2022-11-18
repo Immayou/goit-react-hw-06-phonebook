@@ -1,9 +1,8 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
 import { TiPhoneOutline } from 'react-icons/ti';
 import { generate } from 'shortid';
-import { addContact } from '../../redux/reducers';
+import { addContact } from '../../redux/slice';
 import {
   Title,
   PhoneForm,
@@ -14,8 +13,9 @@ import {
   FormButton,
 } from './ContactForm.styled';
 
-const ContactForm = ({ submitData }) => {
+const ContactForm = () => {
   const dispatch = useDispatch();
+  const addedContacts = useSelector(state => state.contacts);
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
@@ -42,8 +42,15 @@ const ContactForm = ({ submitData }) => {
       number,
       id: generate(),
     };
-    dispatch(addContact(contactToAdd));
-    submitData(contactToAdd);
+
+    const checkIfNewContactAlreadyExists = addedContacts.find(
+      ({ name }) => name.toLowerCase() === contactToAdd.name.toLowerCase()
+    );
+
+    checkIfNewContactAlreadyExists
+      ? alert(`${contactToAdd.name} is already in contacts`)
+      : dispatch(addContact(contactToAdd));
+
     reset();
   };
 
@@ -85,7 +92,3 @@ const ContactForm = ({ submitData }) => {
 };
 
 export default ContactForm;
-
-ContactForm.propTypes = {
-  submitData: PropTypes.func.isRequired,
-};
