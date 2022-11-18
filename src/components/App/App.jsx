@@ -28,6 +28,17 @@ export const App = () => {
   //     window.localStorage.removeItem('addedContacts');
   //   }
   // }, [contacts]);
+  // const enteredFilterValue = useSelector(state => state.filter);
+
+  // const getFiltredContacts = () => {
+  //   const normalizeFilter = enteredFilterValue.toLowerCase();
+  //   const visibleContacts = addedContacts.filter(({ name }) =>
+  //     name.toLowerCase().includes(normalizeFilter)
+  //   );
+  //   return visibleContacts;
+  // };
+
+  // const contactsToRender = getFiltredContacts();
 
   const isArrayOfContactsEmpty = addedContacts.length !== 0;
 
@@ -38,7 +49,11 @@ export const App = () => {
           <ContactForm />
           {isArrayOfContactsEmpty && (
             <div>
-              <ContactsTitle>Contacts</ContactsTitle>
+              <ContactsTitle
+              // comtactsToRender={contactsToRender}
+              >
+                Contacts
+              </ContactsTitle>
               <Filter />
               <ContactList />
             </div>
