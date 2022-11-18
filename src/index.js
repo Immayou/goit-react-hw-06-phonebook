@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { App } from './components/App/App';
 import {
   store,
-  // , persistor
+  // persistor
 } from './redux/store';
 import './index.css';
 
