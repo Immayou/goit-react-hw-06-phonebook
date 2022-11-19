@@ -9,7 +9,7 @@ const Filter = () => {
 
   const filterHandler = e => {
     e.preventDefault();
-    dispatch(setFilter(e.currentTarget.value));
+    dispatch(setFilter(e.currentTarget.value.trim()));
   };
 
   return (
